@@ -8,17 +8,19 @@
 % x0 = valor inicial
 % tol = tolerancia
 % itermax = maximo de iteraciones
-% ea = error absoluto
+% er = error 
 
-function [xr, k] = puntofijo(f, x0, tol, itermax)
-for k = 1:itermax
-    xr = f(x0);
-    ea = abs((xr-x0)/xr)*100;
-    if ((ea<=tol) || (k >= itermax)) %Si el error es menor a la tolerancia o Si las iteraciones 
-                                     % llegan a las iteraciones maximas salir del bucle
-        break;
-    else
-        x0 = xr;
-    end
+function [x0,i] = punto_fijo(f,x0,tol,itermax)
+er = 1; % inicializamos un error que despues cambiara al evaluar la funcion
+i =0; %Contador de iteraciones
+while er > tol && i <= itermax
+    % Mientras el error sea mayor a la tolerancia y las iteraciones sea menor al maximo de interaciones el metodo continuara 
+    xr = x0; % actualizacion del valor donde evaluamos
+    x0 = f(xr);  % calculo de la aproximacion
+    i = i + 1;  % actualizamos contador
+    er = abs(x0-xr);  % Calculamos el error
 end
-  
+if i > itermax
+  error ("Se ha superado el numero maximo de iteraciones. \n")
+end   
+end   
