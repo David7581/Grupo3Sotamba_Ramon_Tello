@@ -11,19 +11,20 @@
 % ea = error absoluto
 
 
-function [xr,i] = punto_fijo(f,x0,tol,itermax)
-er = 1; % inicializamos un error que despues cambiara al evaluar la funcion
-i =0; %Contador de iteraciones
-while er > tol && i <= itermax
-    % Mientras las iteraciones no lleguen al máximo y el error sea mayor
-    % que la tolerancia, el método continuará
-    xr = x0; % actualizacion del valor donde evaluamos
-    x0 = f(xr);  % calculo de la aproximacion
-    i = i + 1;  % actualizamos contador
-    er = abs(x0-xr);  % Calculamos el error
-end
-if i > itermax
-  error ("Se ha superado el numero maximo de iteraciones. \n")
-end   
+function [xr,iter,ea] = puntofijo(x0, es, imax, gx)
+xr = x0;
+iter = 0;
+do = 0;
+while (do== 0)
+    xrold = xr;
+    xr = gx(xrold); %evaluar punto en la funcion
+    iter = iter + 1;% actualizar numero de iteraciones
+    if (xr ~= 0) %Calcular el error absoluto mientras xr sea diferente de 0
+        ea = abs((xr-xrold)/xr)*100;
+    end
+    if ((ea < es) || (iter >= imax))
+        break;
+    end
+    
 end   
   
