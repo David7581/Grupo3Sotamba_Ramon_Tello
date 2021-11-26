@@ -6,32 +6,24 @@
 % f: Función que se evaluará
 % tol: Error de tolerancia 
 % max: Iteraciones máximas
-
 clc
 tol= 10^-5;
 max=100;
 fprintf("Metodo biseccion. \n")
 
 % Ejemplo 1
-fprintf ("Ejemplo 1. \n")
-g = @(x) 1./x^12 -1./x.^6 -0.2;
-xI = 0.9;
-xD = 1.1;
-fprintf("la raiz de la funcion es: \n")
-try
-[r,iteraciones] = biseccion(xI, xD, g, tol, max)
-catch e
-fprintf("Error: %s\n",e.message)
-end
-
-% Ejemplo 2
-fprintf ("Ejemplo 2. \n")
-h = @(x) x.^3 -10.*x^2 -5;
+fprintf ("Problema 1. \n")
+g = @(x) -0.001*x^.2 -0.42*x + 3.07;
 xI = 0;
-xD = 1;
-fprintf("la raiz de la funcion es: \n")
+xD = 9;
+
 try
-[r,iteraciones] = biseccion(xI, xD, h, tol, max)
+tic
+[r,iteraciones] = biseccion(xI, xD, g, tol, max);
+tiempo = toc;
+fprintf('El tiempo de ejecucion es %d \n',tiempo);
+fprintf('La raiz de la funcion es y=%d, el numero de iteraciones es %d',r,iteraciones);
+
 catch e
 fprintf("Error: %s\n",e.message)
 end
