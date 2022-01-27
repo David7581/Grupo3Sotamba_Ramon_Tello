@@ -1,0 +1,20 @@
+%Método de diferencias finitas para la ecuación de conducción de calor
+function eccalor
+alfa=1;
+dx=0.25;
+dt=0.02;
+L=1;
+tmax=1;
+CFL=alfa*dt/(dx^2);
+X=0:dx:L; %Valores de x
+Nt=ceil(tmax/dt)+1; % Numero de elemntos de tiempo
+Nx=length(X); %Cantidad de elementos de x
+%Generar matriz de temperatura
+T=zeros(Nt,Nx);
+T(1,:)=20; T(:,1)=100; T(:,end)=100;
+T(1,1)= (T(1,2)+T(2,1))/2; T(1,end)=(T(1,end-1)+T(2,end))/2
+for f=2:Nt-1 %filas
+    for col=2:Nx-1 %columnas
+        
+    end    
+end

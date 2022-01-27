@@ -1,0 +1,19 @@
+% Metodo de diferencias finitas para para la ecuación de conducción de calor
+% Autores
+% Jonathan Ramon, David Tello
+% Fecha de implementacion: 2/1/2022
+clc
+alfa=1;
+dx=0.25;
+dt=0.02;
+L=1;
+tmax=1;
+try
+eccalor(alfa,dx,dt,L,tmax);
+fprintf('     tiempo     distancias\n')
+fprintf('    t   ')
+fprintf('\t %4.2f',X)
+fprintf('%5.3f \t %4.2f\t %4.2f ')
+catch e
+    fprintf("Error: %s\n", e.message);
+end

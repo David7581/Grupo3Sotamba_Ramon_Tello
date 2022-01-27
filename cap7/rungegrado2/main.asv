@@ -1,0 +1,41 @@
+% Autores: Jonnathan Ramón-David Tello
+clc
+% ejemplo 1
+try 
+    fprintf ("\nEjemplo 1:\n")
+    f= (12*(x.^2))-(20*x)+8.5;
+    x=2;
+    xf=5;
+    h=0.4;
+    y=4;
+    [X,Y]=rungekutta(f,x,xf,y,h) 
+    % Grafica 1
+    figure(1)
+    scatter(X, Y); title("Ejemplo 1");
+    hold on
+    plot(X, Y); legend("Puntos calculados", "Aproximación"); grid on; 
+    xlabel("Eje X"); ylabel("Eje Y");
+    hold off
+catch e
+    fprintf("Error: %s\n", e.message);
+end
+
+% ejemplo 2
+try 
+    fprintf ("\nEjemplo 2:\n")
+    f= (-2*(x.^3))+(12*(x.^2))-(20*x)+8.5;
+    x=2;
+    xf=5;
+    h=0.4;
+    y=4;
+    [X,Y]=rungekutta(f,x,xf,y,h) 
+    % Grafica 2
+    figure(2)
+    scatter(X, Y); title("Ejemplo 2");
+    hold on
+    plot(X, Y); legend("Puntos calculados", "Aproximación"); grid on; 
+    xlabel("Eje X"); ylabel("Eje Y");
+    hold off
+catch e
+    fprintf("Error: %s\n", e.message);
+end
